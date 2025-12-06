@@ -250,6 +250,7 @@ class Experiment(ABC):
                 detection.estimate_score(X_cat_gen, X_cont_gen, y_gen)
             )
 
+        out_dict["detection_scores"] = detection_scores
         out_dict["detection_mean"] = torch.tensor(detection_scores).mean().item()
         out_dict["detection_std"] = torch.tensor(detection_scores).std().item()
 
