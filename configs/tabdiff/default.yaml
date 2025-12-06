@@ -1,0 +1,66 @@
+model_name: 'tabdiff'
+
+model:
+  y_cond: False
+
+data:
+  cont_scaler: 'quantile'
+  cat_encoding:  # empty (None) / onehot
+  drop_cont_missing: True
+  standardize_data: False
+  dequant_data: False
+
+train:
+  num_epochs: 8000
+  max_steps_per_epoch: 1000
+  lr: 0.001
+  weight_decay: 0
+  ema_decay: 0.997
+  batch_size: 4096
+  #check_val_every: 2000
+  factor: 0.9
+  reduce_lr_patience: 50
+  closs_weight_schedule: anneal
+  c_lambda: 1
+  d_lambda: 1
+  device: 'cuda'
+
+sample:
+  batch_size: 10000
+
+unimodmlp_params:
+  num_layers: 2
+  d_token: 4
+  n_head: 1
+  factor: 32
+  bias: true
+  dim_t: 1024
+  use_mlp: true
+
+diffusion_params:
+  num_timesteps: 50
+  scheduler: power_mean_per_column #power_mean
+  cat_scheduler: log_linear_per_column #log_linear
+  noise_dist: uniform_t
+  sampler_params:
+    stochastic_sampler: true
+    second_order_correction: true
+  edm_params:
+    precond: true
+    sigma_data: 1
+    net_conditioning: sigma
+  noise_dist_params:
+    P_mean: -1.2
+    P_std: 1.2
+  noise_schedule_params:
+    sigma_min: 0.002
+    sigma_max: 80
+    rho: 7
+    eps_max: 0.001
+    eps_min: 0.00001
+    rho_init: 7
+    rho_offset: 5
+    k_init: -6
+    k_offset: 1
+
+

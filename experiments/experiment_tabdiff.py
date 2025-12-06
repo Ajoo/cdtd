@@ -18,11 +18,6 @@ from experiments.tabdiff.tabdiff.models.unified_ctime_diffusion import UnifiedCt
 
 from experiments.experiment import Experiment
 from experiments.utils import set_seeds
-#%%
-from omegaconf import OmegaConf
-
-
-config = OmegaConf.load('configs/tabdiff/default.yaml')
 
 def _get_lr(scheduler, initial=None):
     try:
