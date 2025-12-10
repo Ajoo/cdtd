@@ -6,3 +6,4 @@ from .experiment_tabddpm import Experiment_TabDDPM
 from .experiment_codi import Experiment_CoDi
 from .experiment_smote import Experiment_SMOTE
 from .experiment_tabsyn import Experiment_TabSyn
+from .experiment_tabdiff import Experiment_TabDiff

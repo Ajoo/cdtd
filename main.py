@@ -37,6 +37,8 @@ def main(args):
         experiment = Experiment_SMOTE(config, args.exp_path, args.data)
     elif args.model == 'tabsyn':
         experiment = Experiment_TabSyn(config, args.exp_path, args.data)
+    elif args.model == 'tabdiff':
+        experiment = Experiment_TabDiff(config, args.exp_path, args.data)
         
     
     if args.mode == "train":
